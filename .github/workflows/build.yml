@@ -16,14 +16,14 @@ jobs:
         with:
           version: latest
       - name: Build image
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: |
           docker buildx build \
             --push \
             --tag damacus/cert-manager-webhook-dnsimple:latest \
             --platform linux/amd64,linux/arm/v7,linux/arm64 .
       - name: Build unstable image
-        if: github.ref != 'refs/heads/master'
+        if: github.ref != 'refs/heads/main'
         run: |
           docker buildx build \
             --push \
